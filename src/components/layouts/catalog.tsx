@@ -13,6 +13,8 @@ interface State {
 
 const Catalog = (state: State) => {
   const { isactive, setIsactive } = state.state;
+  console.log(isactive);
+
   return (
     <>
       <div
@@ -20,7 +22,7 @@ const Catalog = (state: State) => {
       >
         <Container maxW={"1200px"}>
           <div className="w-full flex justify-between">
-            <div className="w-[20%] h-screen pt-[100px]">
+            <div className="w-[20%] ml-[-4px] h-screen pt-[97px] max-[1000px]:w-[30%] max-[600px]:w-[100%]">
               {categoryTop?.map((el, i) => (
                 <Link href={"/"} key={i}>
                   <p
@@ -32,7 +34,7 @@ const Catalog = (state: State) => {
                 </Link>
               ))}
             </div>
-            <div className="w-[80%] h-screen bg-white pt-[120px] relative flex gap-10">
+            <div className="w-[80%] h-screen bg-white pt-[120px] relative flex gap-10 flex-wrap max-[1000px]:w-[70%] max-[600px]:hidden">
               <span
                 onClick={() => setIsactive(100)}
                 className="absolute top-[120px] right-[100px] cursor-pointer"

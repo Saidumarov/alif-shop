@@ -3,7 +3,7 @@ import React, { FC } from "react";
 import cls from "./index.module.scss";
 import { Button } from "@chakra-ui/react";
 import Link from "next/link";
-import usePrice from "@/hooks/usePrice";
+import { usePrice } from "@/hooks/usePrice";
 import CustomImage from "@/components/image";
 import { ProductType } from "@/types";
 import { IoCart } from "react-icons/io5";

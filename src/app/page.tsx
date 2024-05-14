@@ -4,7 +4,6 @@ import Banner from "@/components/banner";
 import { Container } from "@chakra-ui/react";
 import { Product } from "@/components/product";
 import { Apiservice } from "@/service/api.service";
-import { ProductType } from "@/types";
 import Category from "@/components/layouts/category";
 
 const Home = () => {
@@ -23,7 +22,7 @@ const Home = () => {
     isLoading,
     isError,
     error,
-  } = useQuery<ProductType[]>({
+  } = useQuery({
     queryKey: ["products"],
     queryFn: getData,
   });
