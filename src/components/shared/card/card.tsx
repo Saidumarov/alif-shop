@@ -1,14 +1,21 @@
 "use client";
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import cls from "./index.module.scss";
-import { Button } from "@chakra-ui/react";
+import { Button, useToast } from "@chakra-ui/react";
 import Link from "next/link";
 import { usePrice } from "@/hooks/usePrice";
 import CustomImage from "@/components/image";
 import { ProductType } from "@/types";
 import { IoCart } from "react-icons/io5";
-import { FaRegHeart } from "react-icons/fa";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
+import useCardStore from "@/store/useCardStore";
+import { DecrentBtn, IncrentBtn } from "@/constants";
+import useLikeStore from "@/store/uselikeStore";
 const Card: FC<{ product: ProductType }> = ({ product }) => {
+  const { cards, updateCard, addCard, removeCard } = useCardStore();
+  const { likes, removeLike, addLike } = useLikeStore((state) => state);
+  const [isactive, setisActive] = useState(false);
+  const toast = useToast();
   // tartiblangan  eski narx
   const oldPrice = usePrice(product?.oldPrice);
 
@@ -18,11 +25,45 @@ const Card: FC<{ product: ProductType }> = ({ product }) => {
   //oyiga bulib tulash
   const preMonth = product?.realPrice / 12;
 
+  // Cart active item
+  useEffect(() => {
+    const isActive = cards?.some((el: any) => el?._id === product?._id);
+    setisActive(isActive);
+  }, [cards]);
+
+  const handelCount = (id: string, type: string) => {
+    if (type === "inc") {
+      const newcard = cards?.find((el: ProductType) => el._id === id);
+      const obj = {
+        ...newcard,
+        count: newcard.count + 1,
+      };
+      updateCard(obj);
+    } else {
+      const newcard = cards?.find((el: ProductType) => el._id === id);
+      const obj = {
+        ...newcard,
+        count: newcard.count - 1,
+      };
+      updateCard(obj);
+    }
+  };
+
+  const card = cards?.find((el: ProductType) => el._id === product._id);
+  const count = card ? card.count : 1;
   return (
     <>
       <article className={cls.item}>
-        <span className={cls.like} onClick={(e) => e.stopPropagation()}>
-          <FaRegHeart size={20} color="#555" />
+        <span className={cls.like}>
+          {likes?.some((el: any) => el?._id === product?._id) ? (
+            <span onClick={() => removeLike(product?._id)}>
+              <FaHeart size={20} className="text-[#5338ff]" />
+            </span>
+          ) : (
+            <span onClick={() => addLike(product)}>
+              <FaRegHeart size={20} className="text-[#5338ff]" />
+            </span>
+          )}
         </span>
         <Link href={`/product/${product?._id}`}>
           <div className={cls.img_wrap}>
@@ -49,9 +90,42 @@ const Card: FC<{ product: ProductType }> = ({ product }) => {
             <p className={cls.real_price}>{realPrice} so`m</p>
           </div>
         </Link>
-        <Button onClick={(e) => e.stopPropagation()} className={cls.btn}>
-          Savatga <IoCart />
-        </Button>
+        {isactive ? (
+          <Button isActive={false} className={cls.btn_count}>
+            <button
+              onClick={() => handelCount(product?._id, "dic")}
+              className="flex w-[40%] items-center justify-center outline-none"
+              disabled={count === 1}
+            >
+              <DecrentBtn />
+            </button>
+            <p>{count}</p>
+            <button
+              onClick={() => handelCount(product?._id, "inc")}
+              className="flex w-[40%] items-center justify-center outline-none"
+              disabled={count === product.piece}
+            >
+              <IncrentBtn />
+            </button>
+          </Button>
+        ) : (
+          <Button
+            onClick={(e) => (
+              e.stopPropagation(),
+              addCard(product),
+              toast({
+                position: "top",
+                title: `Tovar savatda`,
+                status: "success",
+                isClosable: true,
+                description: `${product.titel.substring(0, 25)}...`,
+              })
+            )}
+            className={cls.btn}
+          >
+            Savatga <IoCart />
+          </Button>
+        )}
       </article>
     </>
   );

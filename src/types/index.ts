@@ -1,16 +1,20 @@
-interface Image {
-  img: string;
-  _id: string;
-}
 export interface ProductType {
   _id: string;
+  name: string;
+  user: {
+    id: string;
+  };
   titel: string;
-  oldPrice: number;
-  realPrice: number;
-  piece: number;
+  imgags: { img: string }[];
   description: string;
+  realPrice: number;
+  oldPrice: number;
+  perMonth: number;
+  piece: number;
   category: string;
-  imgags: Image[];
-  count: number;
+  brend: string;
   isDiscounts: boolean;
+  count: number;
+  like: boolean;
+  __v: number;
 }

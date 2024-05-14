@@ -13,12 +13,12 @@ interface State {
 
 const Catalog = (state: State) => {
   const { isactive, setIsactive } = state.state;
-  console.log(isactive);
 
   return (
     <>
       <div
-        className={`w-full h-screen bg-[#f5f7f7] fixed z-10 top-[-${isactive}%]`}
+        style={{ top: `-${isactive}%` }}
+        className={`w-full h-screen bg-[#f5f7f7] fixed z-10 `}
       >
         <Container maxW={"1200px"}>
           <div className="w-full flex justify-between">

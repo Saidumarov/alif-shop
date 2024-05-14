@@ -17,7 +17,6 @@ const Category = () => {
             {el.title}
           </Link>
         ))}
-        <GoChevronDown className="absolute right-[1.5px]" />
       </div>
       <div className="mx-auto  p-5 justify-between items-center  relative hidden  w-[95%] max-[1150px]:flex max-[780px]:hidden">
         {category.slice(0, 5).map((el, i) => (

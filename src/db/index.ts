@@ -7,7 +7,7 @@ export const category = [
   { title: "Oshxona uchun texnika" },
   { title: "Go'zallik va sog'liq" },
   { title: "Aqlli uy" },
-  { title: "Yana" },
+  { title: "Sport" },
 ];
 
 export const categoryTop = [
@@ -19,7 +19,6 @@ export const categoryTop = [
   { title: "Oshxona uchun texnika" },
   { title: "Go'zallik va sog'liq" },
   { title: "Aqlli uy" },
-  { title: "Yana" },
   { title: "Oyin' uchun texnika" },
   { title: "Sport tovarlari" },
   { title: "Avtotovarlar" },

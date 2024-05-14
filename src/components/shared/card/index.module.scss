@@ -102,15 +102,28 @@
   }
 }
 
-.btn {
+@mixin button {
   width: 90%;
-  background-color: var(--button_color) !important;
   margin: 0 auto !important;
   display: flex !important;
   color: white !important;
   gap: 5px;
   margin-top: -5px !important;
   margin-bottom: 2px !important;
+}
+
+.btn {
+  @include button;
+  background-color: var(--button_color) !important;
+}
+
+.btn_count {
+  @include button;
+  color: black !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  background-color: rgb(237, 242, 247) !important;
 }
 .like {
   position: absolute;

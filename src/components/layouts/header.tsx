@@ -24,10 +24,12 @@ import { FiShoppingCart } from "react-icons/fi";
 import Catalog from "./catalog";
 import { IoCloseOutline } from "react-icons/io5";
 import Image from "next/image";
+import useCardStore from "@/store/useCardStore";
 
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isactive, setIsactive] = useState(100);
+  const { cards } = useCardStore();
   return (
     <>
       <Modal onClose={onClose} isOpen={isOpen} isCentered>
@@ -108,7 +110,14 @@ const Header = () => {
               //   onSearch={onSearch}
             />
             <div className="flex gap-3 max-[775px]:hidden">
-              <button className="flex flex-wrap justify-center items-center ml-5">
+              <button className="flex flex-wrap justify-center items-center ml-5 relative">
+                <span
+                  className={`absolute w-[20px] h-[20px] rounded-full ${
+                    cards?.length > 0 ? "bg-[#5338ff]" : ""
+                  } inline text-[13px] text-white font-[600] top-[-8px] right-2 `}
+                >
+                  {cards?.length > 0 ? cards?.length : ""}
+                </span>
                 <FiShoppingCart size={20} className="hover:text-[#5338ff]" />
                 <p className="text-sm/[14px] w-full">Savat</p>
               </button>
