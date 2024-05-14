@@ -1,0 +1,120 @@
+.item {
+  padding-bottom: 5px;
+  border: 1px solid var(--body_color);
+  border-radius: var(--product-border-radius);
+  transition: 0.5s;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  .img_wrap {
+    width: 100%;
+    position: relative;
+    height: 180px;
+    margin-bottom: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media (max-width: 600px) {
+      height: 150px;
+      margin-bottom: 10px;
+    }
+    img {
+      width: 92.5%;
+      max-height: 100%;
+      object-fit: cover;
+      border-radius: var(--product-border-radius);
+      transition: 0.5s;
+      margin-top: 15px;
+    }
+    .is_discount {
+      position: absolute;
+      color: #175cd3;
+      font-size: 12px;
+      font-weight: 500;
+      z-index: 2;
+      padding: 6px;
+      border-radius: 10px;
+      bottom: 0;
+      left: 15px;
+      background-color: var(--button_hover);
+      @media (max-width: 600px) {
+        font-size: 12px;
+        font-weight: 500;
+        z-index: 2;
+        padding: 4px 6px;
+        border-radius: 10px;
+      }
+    }
+  }
+  .item_text_wrap {
+    padding: 10px;
+    @media (max-width: 600px) {
+      padding: 5px;
+    }
+    .title_item {
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 15px;
+      letter-spacing: 0px;
+      text-align: left;
+      color: var(--title_color);
+      @media (max-width: 600px) {
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 16px;
+      }
+    }
+    .old_price {
+      text-decoration-line: line-through;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 20px;
+      color: #718094;
+    }
+    .real_price {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 20px;
+      color: var(--title_color);
+    }
+    .pre_month {
+      font-size: 12px;
+      background-color: rgb(155, 114, 242);
+      display: inline-block;
+      padding: 2px 5px 2px 5px;
+      border-radius: 5px;
+      color: white;
+      margin: 7px 0 5px 0;
+    }
+    @media (max-width: 400px) {
+      .real_price {
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+.item:hover {
+  box-shadow: 0 7px 10px #00000026;
+  img {
+    transform: scale(1.01);
+  }
+}
+
+.btn {
+  width: 90%;
+  background-color: var(--button_color) !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  color: white !important;
+  gap: 5px;
+  margin-top: -5px !important;
+  margin-bottom: 2px !important;
+}
+.like {
+  position: absolute;
+  z-index: 2;
+  top: 20px;
+  right: 20px;
+}
