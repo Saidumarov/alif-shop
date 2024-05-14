@@ -8,9 +8,9 @@ import CustomImage from "@/components/image";
 import { ProductType } from "@/types";
 import { IoCart } from "react-icons/io5";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import useCardStore from "@/store/useCardStore";
 import { DecrentBtn, IncrentBtn } from "@/constants";
 import useLikeStore from "@/store/uselikeStore";
+import useCardStore from "@/store/useCardStore";
 const Card: FC<{ product: ProductType }> = ({ product }) => {
   const { cards, updateCard, addCard, removeCard } = useCardStore();
   const { likes, removeLike, addLike } = useLikeStore((state) => state);
@@ -32,20 +32,21 @@ const Card: FC<{ product: ProductType }> = ({ product }) => {
   }, [cards]);
 
   const handelCount = (id: string, type: string) => {
-    if (type === "inc") {
-      const newcard = cards?.find((el: ProductType) => el._id === id);
-      const obj = {
-        ...newcard,
-        count: newcard.count + 1,
-      };
-      updateCard(obj);
-    } else {
-      const newcard = cards?.find((el: ProductType) => el._id === id);
-      const obj = {
-        ...newcard,
-        count: newcard.count - 1,
-      };
-      updateCard(obj);
+    const newcard = cards?.find((el) => el._id === id);
+    if (newcard) {
+      if (type === "inc") {
+        const obj = {
+          ...newcard,
+          count: newcard.count + 1,
+        };
+        updateCard(obj);
+      } else {
+        const obj = {
+          ...newcard,
+          count: newcard.count - 1,
+        };
+        updateCard(obj);
+      }
     }
   };
 
