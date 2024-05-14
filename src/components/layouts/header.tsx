@@ -23,6 +23,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
 import Catalog from "./catalog";
 import { IoCloseOutline } from "react-icons/io5";
+import Image from "next/image";
 
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -68,11 +69,12 @@ const Header = () => {
         <div className=" mx-auto flex  p-5 justify-between  w-[1200px] max-[1230px]:w-[95%]">
           <div className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 gap-5 max-[775px]:hidden">
             <Link href={"/"}>
-              <img
+              <Image
                 src="/images/alifshop-logo.svg"
                 className="max-[1000px]:hidden"
                 width={120}
                 height={120}
+                alt="nor found"
               />
             </Link>
             <Button
