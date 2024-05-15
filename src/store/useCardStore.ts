@@ -27,16 +27,16 @@ const useCardStore = create<CardStore>((set: SetState<CardStore>) => ({
 
   // Karta ma'lumotlarini yuklash
   loadCards: async (cards) => {
-    try {
-      set((state) => ({
-        ...state,
-        cadrs: cards,
-        loading: false,
-      }));
-    } catch (error) {
-      console.log("Xatolik: ", error);
-      set((state) => ({ ...state, error: "Error", loading: false }));
-    }
+    set((state) => ({
+      ...state,
+      cadrs: cards,
+      loading: false,
+    }));
+    set((state) => ({
+      ...state,
+      error: "Error",
+      loading: false,
+    }));
   },
 
   // Karta qo'shish

@@ -110,21 +110,28 @@ const Header = () => {
               //   onSearch={onSearch}
             />
             <div className="flex gap-3 max-[775px]:hidden">
-              <button className="flex flex-wrap justify-center items-center ml-5 relative">
+              <Link
+                href={"/cart"}
+                className="flex flex-wrap justify-center items-center ml-5 relative"
+              >
                 <span
-                  className={`absolute w-[20px] h-[20px] rounded-full ${
+                  className={`text-center absolute w-[20px] h-[20px] rounded-full ${
                     cards?.length > 0 ? "bg-[#5338ff]" : ""
                   } inline text-[13px] text-white font-[600] top-[-8px] right-2 `}
                 >
                   {cards?.length > 0 ? cards?.length : ""}
                 </span>
                 <FiShoppingCart size={20} className="hover:text-[#5338ff]" />
-                <p className="text-sm/[14px] w-full">Savat</p>
-              </button>
-              <button className="flex flex-wrap justify-center items-center">
+                <p className="text-sm/[14px] w-full text-center">Savat</p>
+              </Link>
+
+              <Link
+                href={"/wishes"}
+                className="flex flex-wrap justify-center items-center"
+              >
                 <FaRegHeart size={20} className="hover:text-[#5338ff]" />
-                <p className="text-sm/[14px] w-full">Saralangan</p>
-              </button>
+                <p className="text-sm/[14px] w-full text-center">Saralangan</p>
+              </Link>
               <Button
                 onClick={() => onOpen()}
                 colorScheme="blue"

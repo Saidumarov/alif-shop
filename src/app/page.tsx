@@ -5,8 +5,11 @@ import { Container } from "@chakra-ui/react";
 import { Product } from "@/components/product";
 import { Apiservice } from "@/service/api.service";
 import Category from "@/components/layouts/category";
+import { useEffect } from "react";
+import useCardStore from "@/store/useCardStore";
 
 const Home = () => {
+  const { loadCards, cards } = useCardStore();
   // fetch data
   const getData = async () => {
     try {
@@ -26,6 +29,14 @@ const Home = () => {
     queryKey: ["products"],
     queryFn: getData,
   });
+
+  useEffect(() => {
+    const card = localStorage.getItem("cards");
+    if (card) {
+      const cards = JSON.parse(card);
+      loadCards(cards);
+    }
+  }, [cards]);
 
   return (
     <>
