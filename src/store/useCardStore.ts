@@ -19,11 +19,8 @@ interface CardStore {
   setLoading: (isLoading: boolean) => void;
 }
 
-const storedCards = localStorage.getItem("cards");
-const parsedCards = storedCards ? JSON.parse(storedCards) : null;
-
 const useCardStore = create<CardStore>((set: SetState<CardStore>) => ({
-  cards: parsedCards,
+  cards: [],
   loading: true,
   error: "",
 
@@ -31,9 +28,9 @@ const useCardStore = create<CardStore>((set: SetState<CardStore>) => ({
   addCard: async (newCard: ProductType) => {
     const newCardObj: Card = { ...newCard, count: 1 };
     set((state) => {
-      const cardExists = state.cards.some((card) => card._id === newCard._id);
+      const cardExists = state.cards?.some((card) => card._id === newCard._id);
       if (!cardExists) {
-        const updatedCards = [...state.cards, newCardObj];
+        const updatedCards = [...state?.cards, newCardObj];
         localStorage.setItem("cards", JSON.stringify(updatedCards));
         return { ...state, cards: updatedCards };
       }
@@ -44,7 +41,7 @@ const useCardStore = create<CardStore>((set: SetState<CardStore>) => ({
   // Karta o'chirish
   removeCard: async (cardId: string) => {
     set((state) => {
-      const updatedCards = state.cards.filter((el) => el._id !== cardId);
+      const updatedCards = state.cards?.filter((el) => el._id !== cardId);
       localStorage.setItem("cards", JSON.stringify(updatedCards));
       return { ...state, cards: updatedCards };
     });
@@ -53,7 +50,7 @@ const useCardStore = create<CardStore>((set: SetState<CardStore>) => ({
   // Karta yangilash
   updateCard: async (updatedCard: ProductType) => {
     set((state: any) => {
-      const updatedCards = state.cards.map((card: ProductType) =>
+      const updatedCards = state?.cards?.map((card: ProductType) =>
         card._id === updatedCard._id ? updatedCard : card
       );
       localStorage.setItem("cards", JSON.stringify(updatedCards));
