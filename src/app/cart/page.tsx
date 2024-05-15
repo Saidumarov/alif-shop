@@ -42,6 +42,7 @@ const Cart = () => {
       updateCard(obj);
     }
   };
+
   return (
     <Container maxW={"1200px"}>
       {cards?.length > 0 ? (
@@ -79,7 +80,9 @@ const Cart = () => {
                       </button>
                     </div>
                     <p className={cls.price}>
-                      {usePrice(el.realPrice)}
+                      {el?.realPrice
+                        ?.toString()
+                        ?.replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
                       so'm
                     </p>
                     <button
@@ -99,7 +102,9 @@ const Cart = () => {
                 <p> Miqdor:</p>
                 <p>
                   <b>
-                    {usePrice(subtotal)}
+                    {subtotal
+                      ?.toString()
+                      ?.replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
                     so'm
                   </b>
                 </p>
