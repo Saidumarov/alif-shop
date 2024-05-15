@@ -18,8 +18,11 @@ interface CardStore {
   setError: (errorMessage: string) => void;
   setLoading: (isLoading: boolean) => void;
 }
+let storedCards = null;
+if (typeof window !== "undefined") {
+  storedCards = localStorage.getItem("cards");
+}
 
-const storedCards = localStorage.getItem("cards");
 const parsedCards = storedCards ? JSON.parse(storedCards) : null;
 
 const useCardStore = create<CardStore>((set: SetState<CardStore>) => ({

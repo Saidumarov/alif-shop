@@ -12,7 +12,11 @@ interface LikeStore {
   setLoading: (isLoading: boolean) => void;
 }
 
-const storeLikes = localStorage.getItem("likes");
+let storeLikes = null;
+if (typeof window !== "undefined") {
+  storeLikes = localStorage.getItem("cards");
+}
+
 const parsedLikes = storeLikes ? JSON.parse(storeLikes) : null;
 
 const useLikeStore = create<LikeStore>((set: SetState<LikeStore>) => ({
