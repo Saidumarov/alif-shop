@@ -1,47 +1,28 @@
 import { ProductType } from "@/types";
 import { create, SetState } from "zustand";
 
-// Karta interfeysi
-interface Likes extends ProductType {}
-
 // Karta do'kon interfeysi
 interface LikeStore {
-  likes: Likes[];
+  likes: ProductType[];
   loading: boolean;
   error: string;
-  loadLikes: () => Promise<void>;
   addLike: (newCard: ProductType) => Promise<void>;
   removeLike: (cardId: string) => Promise<void>;
   setError: (errorMessage: string) => void;
   setLoading: (isLoading: boolean) => void;
 }
 
-// Karta do'koni ma'lumotlarini saqlash uchun zustand hook'ini o'rnatish
+const storeLikes = localStorage.getItem("likes");
+const parsedLikes = storeLikes ? JSON.parse(storeLikes) : null;
+
 const useLikeStore = create<LikeStore>((set: SetState<LikeStore>) => ({
-  likes: [],
+  likes: parsedLikes,
   loading: true,
   error: "",
 
-  // Karta ma'lumotlarini yuklash
-  loadLikes: async () => {
-    try {
-      const cards = await localStorage.getItem("likes");
-      if (cards !== null) {
-        set((state) => ({
-          ...state,
-          likes: JSON.parse(cards),
-          loading: false,
-        }));
-      }
-    } catch (error) {
-      console.log("Xatolik: ", error);
-      set((state) => ({ ...state, error: "Error", loading: false }));
-    }
-  },
-
   // Karta qo'shish
   addLike: async (newCard: ProductType) => {
-    const newCardObj: Likes = { ...newCard, count: 1 };
+    const newCardObj: ProductType = { ...newCard, count: 1 };
     set((state) => {
       const cardExists = state.likes.some((card) => card._id === newCard._id);
       if (!cardExists) {

@@ -11,7 +11,7 @@ interface CardStore {
   cards: Card[];
   loading: boolean;
   error: string;
-  loadCards: (cards: ProductType) => Promise<void>;
+  // loadCards: (cards: ProductType) => Promise<void>;
   addCard: (newCard: ProductType) => Promise<void>;
   removeCard: (cardId: string) => Promise<void>;
   updateCard: (updatedCard: ProductType) => Promise<void>;
@@ -19,25 +19,13 @@ interface CardStore {
   setLoading: (isLoading: boolean) => void;
 }
 
-// Karta do'koni ma'lumotlarini saqlash uchun zustand hook'ini o'rnatish
+const storedCards = localStorage.getItem("cards");
+const parsedCards = storedCards ? JSON.parse(storedCards) : null;
+
 const useCardStore = create<CardStore>((set: SetState<CardStore>) => ({
-  cards: [],
+  cards: parsedCards,
   loading: true,
   error: "",
-
-  // Karta ma'lumotlarini yuklash
-  loadCards: async (cards) => {
-    set((state) => ({
-      ...state,
-      cadrs: cards,
-      loading: false,
-    }));
-    set((state) => ({
-      ...state,
-      error: "Error",
-      loading: false,
-    }));
-  },
 
   // Karta qo'shish
   addCard: async (newCard: ProductType) => {
