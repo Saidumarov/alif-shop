@@ -4,7 +4,7 @@ import { Container } from "@chakra-ui/react";
 const Footer = () => {
   return (
     <>
-      <div className="w-full flex justify-between items-center bg-slate-900 mt-20 pb-20">
+      <div className="w-full flex justify-between items-center bg-slate-900 pb-20">
         <Container maxW={"1200px"}>
           <div className="w-full flex justify-between flex-wrap items-center">
             <div className="w-[25%] h-[250px] max-[800px]:w-[50%] max-[500px]:w-[100%]">

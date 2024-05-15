@@ -6,6 +6,7 @@ interface LikeStore {
   likes: ProductType[];
   loading: boolean;
   error: string;
+  loadLikes: (cards: ProductType[]) => Promise<void>;
   addLike: (newCard: ProductType) => Promise<void>;
   removeLike: (cardId: string) => Promise<void>;
   setError: (errorMessage: string) => void;
@@ -16,6 +17,17 @@ const useLikeStore = create<LikeStore>((set: SetState<LikeStore>) => ({
   likes: [],
   loading: true,
   error: "",
+
+  // Kartlarni yuklash
+  loadLikes: async (cards: ProductType[]) => {
+    set((state) => {
+      return {
+        ...state,
+        likes: cards,
+        loading: false,
+      };
+    });
+  },
 
   // Karta qo'shish
   addLike: async (newCard: ProductType) => {

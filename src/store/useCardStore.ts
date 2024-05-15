@@ -11,7 +11,7 @@ interface CardStore {
   cards: Card[];
   loading: boolean;
   error: string;
-  // loadCards: (cards: ProductType) => Promise<void>;
+  loadCards: (cards: ProductType[]) => Promise<void>;
   addCard: (newCard: ProductType) => Promise<void>;
   removeCard: (cardId: string) => Promise<void>;
   updateCard: (updatedCard: ProductType) => Promise<void>;
@@ -24,6 +24,16 @@ const useCardStore = create<CardStore>((set: SetState<CardStore>) => ({
   loading: true,
   error: "",
 
+  // Kartlarni yuklash
+  loadCards: async (cards: ProductType[]) => {
+    set((state) => {
+      return {
+        ...state,
+        cards: cards,
+        loading: false,
+      };
+    });
+  },
   // Karta qo'shish
   addCard: async (newCard: ProductType) => {
     const newCardObj: Card = { ...newCard, count: 1 };

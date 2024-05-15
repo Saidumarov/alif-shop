@@ -12,8 +12,10 @@ import { DecrentBtn, IncrentBtn } from "@/constants";
 import useLikeStore from "@/store/uselikeStore";
 import useCardStore from "@/store/useCardStore";
 const Card: FC<{ product: ProductType }> = ({ product }) => {
-  const { cards, updateCard, addCard, removeCard } = useCardStore();
-  const { likes, removeLike, addLike } = useLikeStore((state) => state);
+  const { cards, updateCard, addCard, removeCard, loadCards } = useCardStore();
+  const { likes, removeLike, addLike, loadLikes } = useLikeStore(
+    (state) => state
+  );
   const [isactive, setisActive] = useState(false);
   const toast = useToast();
   // tartiblangan  eski narx

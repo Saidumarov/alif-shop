@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 const Wishes = () => {
   const { likes } = useLikeStore((state) => state);
   const root = useRouter();
+
   return (
     <>
       <Container maxW={"1200px"}>

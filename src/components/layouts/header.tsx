@@ -69,7 +69,7 @@ const Header = () => {
       <Catalog state={{ isactive, setIsactive }} />
       <header className="text-gray-600 body-font bg-white sticky shadow-md top-0 w-full z-20">
         <div className=" mx-auto flex  p-5 justify-between  w-[1200px] max-[1230px]:w-[95%]">
-          <div className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 gap-5  max-[775px]:m-0">
+          <div className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0 gap-5  max-[775px]:hidden">
             <Link href={"/"}>
               <Image
                 src="/images/alifshop-logo.svg"
@@ -100,13 +100,13 @@ const Header = () => {
               </p>
             </Button>
           </div>
-          <nav className="flex items-center w-[70%] max-[1280px]:w-[80%]max-[1000px]:w-[90%] max-[775px]:w-[100%] ">
+          <nav className="flex items-center w-[70%] max-[1280px]:w-[80%] max-[1000px]:w-[90%] max-[775px]:w-[100%] ">
             <Search
               placeholder="Tavarlarni izlash"
               allowClear
               enterButton
               size="large"
-              className="w-[450px] max-[775px]:w-[100%]"
+              className="w-[450px]  max-[775px]:w-[100%]"
               //   onSearch={onSearch}
             />
             <div className="flex gap-3 max-[775px]:hidden">

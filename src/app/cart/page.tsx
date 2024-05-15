@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import useCardStore from "@/store/useCardStore";
 import CustomImage from "@/components/image";
-import { usePrice } from "@/hooks/usePrice";
 import { DecrentBtn, Delete, IncrentBtn } from "@/constants";
 import NotProduct from "./not-product";
 import { ProductType } from "@/types";
@@ -57,7 +56,7 @@ const Cart = () => {
                       Mahsulotdan {el?.piece} dona bor
                     </p>
                     <div className={cls.shopping_cart_left_img}>
-                      <CustomImage product={el.imgags[0]?.img} />
+                      <CustomImage product={el?.imgags[0]?.img} />
                     </div>
                     <h3 className={cls.shopping_cart_left_title}>
                       {el.titel.length > 50
@@ -109,7 +108,7 @@ const Cart = () => {
                   </b>
                 </p>
               </div>
-              <Link href={"/checkout/products"}>
+              <Link href={"/checkout"}>
                 <Button className={cls.order}>BUYURTMA</Button>
               </Link>
             </div>
