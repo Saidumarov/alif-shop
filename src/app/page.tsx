@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import useCardStore from "@/store/useCardStore";
 
 const Home = () => {
-  // const { loadCards, cards } = useCardStore();
+  const { loadCards, cards } = useCardStore();
   // fetch data
   const getData = async () => {
     try {
@@ -30,13 +30,13 @@ const Home = () => {
     queryFn: getData,
   });
 
-  // useEffect(() => {
-  //   const card = localStorage.getItem("cards");
-  //   if (card) {
-  //     const cards = JSON.parse(card);
-  //     loadCards(cards);
-  //   }
-  // }, [cards]);
+  useEffect(() => {
+    const card = localStorage.getItem("cards");
+    if (card) {
+      const cards = JSON.parse(card);
+      loadCards(cards);
+    }
+  }, [cards]);
 
   return (
     <>
