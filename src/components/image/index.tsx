@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import cls from "./index.module.scss";
 
 const CustomImage = (product: any) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -13,7 +12,11 @@ const CustomImage = (product: any) => {
         alt={product?.titel || "Not Found"}
         width={10000}
         height={10000}
-        className={`${isLoading ? cls.img_loading : cls.img_loading_disabled}`}
+        className={`object-contain duration-700 ease-in-out group-hover:opacity-75f ${
+          isLoading
+            ? "scale-110 blur-2xl grayscale"
+            : "scale-100 blur-0 grayscale"
+        }}`}
         onLoad={() => setIsLoading(false)}
         priority={true}
       />
