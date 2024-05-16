@@ -1,0 +1,129 @@
+.rasmilashtrish {
+  font-size: 27px;
+  padding-top: 50px;
+}
+
+.chekout_wrap {
+  width: 100%;
+  height: auto;
+  padding-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-items: start;
+  padding-bottom: 100px;
+  .chekout_wrap_left {
+    width: 72%;
+    position: relative;
+    height: 100%;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--body_color);
+    padding-bottom: 50px;
+    position: sticky;
+    top: 20px;
+    .form {
+      width: 100%;
+      display: grid;
+      padding: 0 0 0 40px;
+      grid-template-columns: 1fr 1fr;
+      .form_control {
+        width: 90%;
+        label {
+          margin-top: 40px;
+          padding-left: 10px;
+        }
+      }
+    }
+    @media (max-width: 500px) {
+      .form {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0;
+        .form_control {
+          width: 90%;
+          margin: 0 auto;
+        }
+      }
+    }
+    .zakas {
+      width: 200px;
+      height: 50px;
+      margin: 50px 0 0 40px;
+      background-color: rgb(51, 116, 255);
+      color: white;
+    }
+    .zakas:hover {
+      background-color: rgb(51, 116, 255);
+    }
+    @media (max-width: 500px) {
+      .zakas {
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        margin-top: 50px;
+      }
+    }
+  }
+  .chekout_wrap_right {
+    width: 24%;
+    height: auto;
+    padding-bottom: 50px;
+    padding-top: 10px;
+    border: 1px solid var(--body_color);
+    border-radius: var(--border-radius);
+    .chekout_wrap_right_img {
+      img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-top: 15px;
+        margin-left: 15px;
+        margin-bottom: 5px;
+      }
+      p {
+        font-size: 15px;
+        padding-left: 10px;
+        padding-top: 5px;
+      }
+      p:nth-child(4) {
+        font-size: 18px;
+      }
+    }
+    .jami {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 30px 20px 0 20px;
+      h3 {
+        font-size: 22px;
+      }
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .chekout_wrap {
+    height: auto;
+    padding-bottom: 50px;
+    flex-wrap: wrap;
+    .chekout_wrap_left {
+      width: 100%;
+      height: 400px;
+      position: relative;
+    }
+    .chekout_wrap_right {
+      width: 100%;
+      margin-top: 50px;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .chekout_wrap {
+    .chekout_wrap_left {
+      height: 600px;
+    }
+  }
+}

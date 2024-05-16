@@ -1,0 +1,21 @@
+.h3 {
+  font-size: 25px;
+  padding: 100px 0 15px 0;
+  font-weight: 600;
+}
+.carausel_card {
+  width: 215px !important;
+  padding-bottom: 30px;
+}
+
+@media (max-width: 1150px) {
+  .carausel_card {
+    width: 95% !important;
+  }
+}
+
+@media (max-width: 725px) {
+  .h3 {
+    font-size: 20px;
+  }
+}

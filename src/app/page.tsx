@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import useCardStore from "@/store/useCardStore";
 import useLikeStore from "@/store/uselikeStore";
 import Mobile from "@/components/layouts/mobile";
+import Brend from "@/components/layouts/brend";
 
 const Home = () => {
   const { loadCards } = useCardStore();
@@ -55,6 +56,7 @@ const Home = () => {
         <div>
           <Product products={{ dataRespons, isError, isLoading, error }} />
         </div>
+        <Brend />
       </Container>
       <Mobile />
     </>

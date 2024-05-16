@@ -26,3 +26,37 @@ export const categoryTop = [
   { title: "Bolalar buyumlari" },
   { title: "Qurilish va ta'mirlash" },
 ];
+
+export const Images = [
+  "/brend/apple.png",
+  "/brend/mi.png",
+  "/brend/asus.png",
+  "/brend/artel.png",
+  "/brend/shavaki.png",
+  "/brend/honor.png",
+  "/brend/lg.png",
+  "/brend/samsung.png",
+  "/brend/avalon.png",
+  "/brend/nextbook.png",
+  "/brend/renemi.png",
+  "/brend/rrr.png",
+  "/brend/oop.png",
+  "/brend/avitech.jpg",
+  "/brend/teco.png",
+  "/brend/glors.png",
+];
+
+export const Viloyatlar = [
+  { title: "Toshkent" },
+  { title: "Andijon" },
+  { title: "Buxoro" },
+  { title: "Farg'ona" },
+  { title: "Jizzax" },
+  { title: "Xorazm" },
+  { title: "Namangan" },
+  { title: "Navoiy" },
+  { title: "Qashqadaryo" },
+  { title: "Samarqand" },
+  { title: "Sirdaryo" },
+  { title: "Surxondaryo" },
+];

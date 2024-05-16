@@ -1,15 +1,30 @@
 "use client";
 import useLikeStore from "@/store/uselikeStore";
 import { Button, Container, Heading } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import cls from "@/components/product/index.module.scss";
 import Card from "@/components/shared/card/card";
 import { FaRegHeart } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import useCardStore from "@/store/useCardStore";
 const Wishes = () => {
-  const { likes } = useLikeStore((state) => state);
+  const { likes, loadLikes } = useLikeStore((state) => state);
+  const { loadCards } = useCardStore();
+
   const root = useRouter();
 
+  useEffect(() => {
+    const card = localStorage.getItem("cards");
+    const like = localStorage.getItem("likes");
+    if (card) {
+      const cards = JSON.parse(card);
+      loadCards(cards);
+    }
+    if (like) {
+      const likes = JSON.parse(like);
+      loadLikes(likes);
+    }
+  }, []);
   return (
     <>
       <Container maxW={"1200px"}>
@@ -18,7 +33,10 @@ const Wishes = () => {
             <Heading size={"xl"} className="flex items-center gap-2 pt-12">
               Saralanganlar <FaRegHeart size={30} className="text-[#5338ff]" />
             </Heading>
-            <section className={cls.product_wrap}>
+            <section
+              style={{ paddingBottom: "50px" }}
+              className={cls.product_wrap}
+            >
               <div className={cls.item_container}>
                 {likes?.map((product) => {
                   return <Card key={product?._id} product={product} />;

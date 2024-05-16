@@ -8,9 +8,11 @@ import CustomImage from "@/components/image";
 import { DecrentBtn, Delete, IncrentBtn } from "@/constants";
 import NotProduct from "./not-product";
 import { ProductType } from "@/types";
+import useLikeStore from "@/store/uselikeStore";
 const Cart = () => {
-  const { cards, updateCard, addCard, removeCard } = useCardStore();
+  const { cards, updateCard, addCard, removeCard, loadCards } = useCardStore();
   const [subtotal, setSubtotal] = useState(0);
+
   //
   useEffect(() => {
     // subtotal
@@ -42,6 +44,13 @@ const Cart = () => {
     }
   };
 
+  useEffect(() => {
+    const card = localStorage.getItem("cards");
+    if (card) {
+      const cards = JSON.parse(card);
+      loadCards(cards);
+    }
+  }, []);
   return (
     <Container maxW={"1200px"}>
       {cards?.length > 0 ? (

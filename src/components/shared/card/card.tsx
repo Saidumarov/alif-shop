@@ -13,9 +13,7 @@ import useLikeStore from "@/store/uselikeStore";
 import useCardStore from "@/store/useCardStore";
 const Card: FC<{ product: ProductType }> = ({ product }) => {
   const { cards, updateCard, addCard, removeCard, loadCards } = useCardStore();
-  const { likes, removeLike, addLike, loadLikes } = useLikeStore(
-    (state) => state
-  );
+  const { likes, removeLike, addLike, loadLikes } = useLikeStore();
   const [isactive, setisActive] = useState(false);
   const toast = useToast();
   // tartiblangan  eski narx
