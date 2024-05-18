@@ -57,7 +57,7 @@ const Header = () => {
   ];
   const root = useRouter();
   const handelSearch = (value: string) => {
-    root.push(`/search?q=${value}`);
+    root.push(`/search/${value}`);
     setIsFocused(false);
   };
   const onSearch: SearchProps["onSearch"] = (value) => {
@@ -146,7 +146,6 @@ const Header = () => {
             <div className="relative w-full">
               <Search
                 placeholder="Tavarlarni izlash"
-                allowClear
                 enterButton
                 size="large"
                 className="w-full  max-[775px]:w-[100%]"
@@ -161,7 +160,7 @@ const Header = () => {
               >
                 {searchDb?.map((el, i) => (
                   <Link
-                    href={`/search?q=${el.title}`}
+                    href={`/search/${el.title}`}
                     onClick={() => setCategory(el?.title)}
                     key={i}
                     className=" block text-slate-500 font-[500] text-[14px] cursor-pointer p-2  hover:bg-[#f5f7f7] pl-12 hover:text-[#4043ff] rounded-md 

@@ -8,39 +8,33 @@ import { ProductType } from "@/types";
 import Image from "next/image";
 import LoadingProduct from "@/components/shared/loading/loading";
 import { Category } from "@/context";
+import { useParams } from "next/navigation";
 const Search = () => {
-  const uri = window.location.href;
+  const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
-  const api = uri.split("?q=")[1];
   const { category } = useContext(Category);
+
   useEffect(() => {
     const getData = async () => {
-      if (typeof window !== "undefined") {
-        const uri = window.location.href;
-        let api;
-        if (uri) {
-          api = uri.split("?q=")[1];
-        }
-        if (api) {
-          setIsLoading(true);
-          try {
-            const response = await Apiservice.fetching(`search?query=${api}`);
-            setData(response);
-          } catch (error) {
-            console.error(error);
-          } finally {
-            setIsLoading(false);
-          }
+      if (id) {
+        setIsLoading(true);
+        try {
+          const response = await Apiservice.fetching(`search?query=${id}`);
+          setData(response);
+        } catch (error) {
+          console.error(error);
+        } finally {
+          setIsLoading(false);
         }
       }
-      if (api === "") {
+      if (id === "") {
         setIsLoading(false);
       }
     };
 
     getData();
-  }, [api, category]);
+  }, [id, category]);
 
   return (
     <section
@@ -52,7 +46,7 @@ const Search = () => {
           <LoadingProduct />
         ) : (
           <>
-            <Heading size={"lg"}>Qidiruv natijalari {api} </Heading>
+            <Heading size={"lg"}>Qidiruv natijalari {id} </Heading>
             <div className="pt-2 pb-5">
               <p>{data?.length} ta mahsulot topildi</p>
             </div>
