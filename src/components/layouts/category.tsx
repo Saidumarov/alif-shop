@@ -6,27 +6,13 @@ import { GoChevronDown } from "react-icons/go";
 
 const CategoryTop = () => {
   const { setCategory, setCategoryT } = useContext(Category);
-  const categorydb = [
-    { title: "Smartfonlar va gadjetlar", path: "telifon" },
-    { title: "Noutbuklar, kompyuterlar", path: "kompyuter" },
-  ];
   return (
     <>
       <div className="mx-auto flex p-5 justify-between items-center  w-[1200px] relative  max-[1230px]:w-[95%] max-[1150px]:hidden">
-        {categorydb.map((el, i) => (
+        {categoryDb.map((el, i) => (
           <Link
             href={`/category/${el?.path}`}
             onClick={() => (setCategory(el?.path), setCategoryT(el?.path))}
-            className=" text-slate-500 font-[500] text-[14px] cursor-pointer hover:text-black hover:underline
-            transition-all"
-            key={i}
-          >
-            {el.title}
-          </Link>
-        ))}
-        {categoryDb.map((el, i) => (
-          <Link
-            href={"/"}
             className=" text-slate-500 font-[500] text-[14px] cursor-pointer hover:text-black hover:underline
             transition-all"
             key={i}
@@ -38,7 +24,8 @@ const CategoryTop = () => {
       <div className="mx-auto  p-5 justify-between items-center  relative hidden  w-[95%] max-[1150px]:flex max-[780px]:hidden">
         {categoryDb.slice(0, 5).map((el, i) => (
           <Link
-            href={"/"}
+            href={`/category/${el?.path}`}
+            onClick={() => (setCategory(el?.path), setCategoryT(el?.path))}
             className=" text-slate-500 font-[500] text-[14px] cursor-pointer hover:text-black hover:underline
             transition-all"
             key={i}

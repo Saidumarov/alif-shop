@@ -1,5 +1,5 @@
 import { Category } from "@/context";
-import { CategoryData, categoryTop } from "@/db";
+import { CategoryData, categoryDb } from "@/db";
 import { Container, Heading } from "@chakra-ui/react";
 import Link from "next/link";
 import React, { useContext } from "react";
@@ -15,10 +15,6 @@ interface State {
 const Catalog = (state: State) => {
   const { isactive, setIsactive } = state.state;
   const { setCategory, setCategoryT } = useContext(Category);
-  const categorydb = [
-    { title: "Smartfonlar va gadjetlar", path: "telifon" },
-    { title: "Noutbuklar, kompyuterlar", path: "kompyuter" },
-  ];
 
   return (
     <>
@@ -29,7 +25,7 @@ const Catalog = (state: State) => {
         <Container maxW={"1200px"}>
           <div className="w-full flex justify-between">
             <div className="w-[20%] ml-[-4px] h-screen pt-[97px] max-[1000px]:w-[30%] max-[600px]:w-[100%]">
-              {categorydb?.map((el, i) => (
+              {categoryDb?.map((el, i) => (
                 <Link
                   href={`/category/${el?.path}`}
                   onClick={() => (
@@ -39,16 +35,6 @@ const Catalog = (state: State) => {
                   )}
                   key={i}
                 >
-                  <p
-                    className="text-slate-500 font-[500] text-[14px] cursor-pointer p-2  hover:bg-white hover:text-[#4043ff] rounded-md 
-                  transition-all"
-                  >
-                    {el.title}
-                  </p>
-                </Link>
-              ))}
-              {categoryTop?.map((el, i) => (
-                <Link href={"/"} key={i}>
                   <p
                     className="text-slate-500 font-[500] text-[14px] cursor-pointer p-2  hover:bg-white hover:text-[#4043ff] rounded-md 
                   transition-all"

@@ -1,10 +1,12 @@
 export const categoryDb = [
-  { title: "TV va proektorlar" },
-  { title: "Audiotexnikalar" },
-  { title: "Uy uchun texnika" },
-  { title: "Oshxona uchun texnika" },
-  { title: "Go'zallik va sog'liq" },
-  { title: "Aqlli uy" },
+  { title: "Smartfonlar va gadjetlar", path: "telifon" },
+  { title: "Noutbuklar, kompyuterlar", path: "kompyuter" },
+  { title: "TV va proektorlar", path: "tv" },
+  { title: "Audiotexnikalar", path: "audiotexnikalar" },
+  { title: "Uy uchun texnika", path: "uchun texnika" },
+  { title: "Oshxona uchun texnika", path: "Oshxona uchun texnika" },
+  { title: "Go'zallik va sog'liq", path: "go'zallik va sog'liq" },
+  { title: "Aqlli uy", path: "Aqlli uy" },
 ];
 
 export const CategoryData = [
@@ -78,21 +80,6 @@ export const CategoryData = [
     title: "Huawei",
     type: "telifon",
   },
-];
-
-export const categoryTop = [
-  { title: "TV va proektorlar" },
-  { title: "Audiotexnikalar" },
-  { title: "Uy uchun texnika" },
-  { title: "Oshxona uchun texnika" },
-  { title: "Go'zallik va sog'liq" },
-  { title: "Aqlli uy" },
-  { title: "Oyin' uchun texnika" },
-  { title: "Sport tovarlari" },
-  { title: "Avtotovarlar" },
-  { title: "Asboblar va bog ' texnikasi" },
-  { title: "Bolalar buyumlari" },
-  { title: "Qurilish va ta'mirlash" },
 ];
 
 export const Images = [
