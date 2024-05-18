@@ -18,7 +18,10 @@ const Search = () => {
     const getData = async () => {
       if (typeof window !== "undefined") {
         const uri = window.location.href;
-        const api = uri.split("?q=")[1];
+        let api;
+        if (uri) {
+          api = uri.split("?q=")[1];
+        }
         if (api) {
           setIsLoading(true);
           try {
