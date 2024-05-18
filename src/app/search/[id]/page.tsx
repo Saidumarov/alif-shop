@@ -14,7 +14,7 @@ const Search = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
   const { category } = useContext(Category);
-
+  const text = id.toString().split("%20").join(" ");
   useEffect(() => {
     const getData = async () => {
       if (id) {
@@ -46,7 +46,7 @@ const Search = () => {
           <LoadingProduct />
         ) : (
           <>
-            <Heading size={"lg"}>Qidiruv natijalari {id} </Heading>
+            <Heading size={"lg"}>Qidiruv natijalari {text} </Heading>
             <div className="pt-2 pb-5">
               <p>{data?.length} ta mahsulot topildi</p>
             </div>
