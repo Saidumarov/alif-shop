@@ -14,18 +14,21 @@ const Search = () => {
   const [data, setData] = useState([]);
   const api = uri.split("?q=")[1];
   const { category } = useContext(Category);
-
   useEffect(() => {
-    setIsLoading(true);
     const getData = async () => {
-      if (api) {
-        try {
-          const response = await Apiservice.fetching(`search?query=${api}`);
-          setData(response);
-        } catch (error) {
-          console.log(error);
-        } finally {
-          setIsLoading(false);
+      if (typeof window !== "undefined") {
+        const uri = window.location.href;
+        const api = uri.split("?q=")[1];
+        if (api) {
+          setIsLoading(true);
+          try {
+            const response = await Apiservice.fetching(`search?query=${api}`);
+            setData(response);
+          } catch (error) {
+            console.error(error);
+          } finally {
+            setIsLoading(false);
+          }
         }
       }
       if (api === "") {
