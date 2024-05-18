@@ -7,7 +7,7 @@ const LoadingCard = (loading: any) => {
   const newData: any[] = loadingCard ? loadingCard : data;
   return (
     <>
-      {newData.map((_, i) => (
+      {newData?.map((_, i) => (
         <article className={cls.item} key={i}>
           <Stack>
             <Skeleton

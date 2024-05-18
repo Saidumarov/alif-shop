@@ -4,12 +4,12 @@ import Banner from "@/components/banner";
 import { Container } from "@chakra-ui/react";
 import { Product } from "@/components/product";
 import { Apiservice } from "@/service/api.service";
-import Category from "@/components/layouts/category";
 import { useEffect } from "react";
 import useCardStore from "@/store/useCardStore";
 import useLikeStore from "@/store/uselikeStore";
 import Mobile from "@/components/layouts/mobile";
 import Brend from "@/components/layouts/brend";
+import CategoryTop from "@/components/layouts/category";
 
 const Home = () => {
   const { loadCards } = useCardStore();
@@ -50,7 +50,7 @@ const Home = () => {
 
   return (
     <>
-      <Category />
+      <CategoryTop />
       <Container maxW={"1200px"}>
         <Banner />
         <div>

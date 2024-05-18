@@ -7,6 +7,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import ReactQueryProvider from "@/hooks/ReactQueryProvider";
 import Footer from "@/components/layouts/footer";
 import FixedMenu from "@/components/fixed-menu";
+import CategoryProvider from "@/context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,15 +24,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NextTopLoader />
-        <ChakraProvider>
-          <ReactQueryProvider>
-            <Header />
-            {children}
-            <FixedMenu />
-            <Footer />
-          </ReactQueryProvider>
-        </ChakraProvider>
+        <CategoryProvider>
+          <NextTopLoader />
+          <ChakraProvider>
+            <ReactQueryProvider>
+              <Header />
+              {children}
+              <FixedMenu />
+              <Footer />
+            </ReactQueryProvider>
+          </ChakraProvider>
+        </CategoryProvider>
       </body>
     </html>
   );

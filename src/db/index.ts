@@ -1,18 +1,86 @@
-export const category = [
-  { title: "Smartfonlar va gadjetlar" },
-  { title: "Noutbuklar, kompyuterlar" },
+export const categoryDb = [
   { title: "TV va proektorlar" },
   { title: "Audiotexnikalar" },
   { title: "Uy uchun texnika" },
   { title: "Oshxona uchun texnika" },
   { title: "Go'zallik va sog'liq" },
   { title: "Aqlli uy" },
-  { title: "Sport" },
+];
+
+export const CategoryData = [
+  {
+    path: "victus",
+    type: "kompyuter",
+    title: "Victus",
+  },
+  {
+    path: "hp",
+    type: "kompyuter",
+    title: "HP Laptop",
+  },
+  {
+    path: "lenovo",
+    type: "kompyuter",
+    title: "Lenovo",
+  },
+  {
+    path: "samsung",
+    type: "kompyuter",
+    title: "Samsung",
+  },
+  {
+    path: "asus",
+    type: "kompyuter",
+    title: "Asus",
+  },
+  {
+    path: "mac_book",
+    type: "kompyuter",
+    title: "MacBook",
+  },
+  {
+    path: "acer",
+    type: "kompyuter",
+    title: "Acer",
+  },
+  {
+    path: "iphone",
+    title: "iPhone",
+    type: "telifon",
+  },
+  {
+    path: "samsung",
+    title: "Samsung",
+    type: "telifon",
+  },
+  {
+    path: "xiaomi",
+    title: "Xiaomi",
+    type: "telifon",
+  },
+  {
+    path: "poco",
+    title: "Poco",
+    type: "telifon",
+  },
+  {
+    path: "redmi",
+    title: "Redmi",
+    type: "telifon",
+  },
+  {
+    path: "vivo",
+    title: "Vivo",
+    type: "telifon",
+  },
+  {
+    path: "huawei",
+    title: "Huawei",
+    type: "telifon",
+  },
 ];
 
 export const categoryTop = [
-  { title: "Smartfonlar va gadjetlar" },
-  { title: "Noutbuklar, kompyuterlar" },
   { title: "TV va proektorlar" },
   { title: "Audiotexnikalar" },
   { title: "Uy uchun texnika" },
