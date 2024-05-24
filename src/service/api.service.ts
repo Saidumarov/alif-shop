@@ -1,6 +1,6 @@
 import axios from "axios";
 const BASE_URI = process.env.NEXT_PUBLIC_API_URL;
-const authToken = "12345678";
+const authToken = "9876543210";
 export const Apiservice = {
   async fetching(url: string) {
     try {
